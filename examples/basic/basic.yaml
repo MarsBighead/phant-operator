@@ -1,0 +1,18 @@
+# IT IS NOT SUITABLE FOR PRODUCTION USE.
+# This YAML describes a basic PostgreSQL cluster with minimum resource requirements,
+# which should be able to run in any Kubernetes cluster with storage support.
+apiVersion: phant.io/v1alpha1
+kind: PostgresCluster
+metadata:
+  name: basic
+spec:
+  postgres:
+    version: "14.10"
+    baseImage: postgres
+    maxFailoverCount: 0
+    replicas: 1
+    # if storageClassName is not set, the default Storage Class of the Kubernetes cluster will be used
+    # storageClassName: local-storage
+    requests:
+      storage: "1Gi"
+    config: {}
